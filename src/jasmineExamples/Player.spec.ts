@@ -3,7 +3,7 @@
 import { createPlayer } from './Player.mock';
 import { createSong } from './Song.mock';
 
-describe('Player', function() {
+xdescribe('Player', function() {
   let player;
   let song;
 

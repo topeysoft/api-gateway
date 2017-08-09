@@ -1,0 +1,32 @@
+[
+    {
+        "name": "my-api",
+        "type": "proxy",
+        "origins": [
+            {
+                "hostname": "api.elyir.local",
+                "path": "/api"
+            }
+        ],
+        "target": {
+            "host": "localhost:5200",
+            "app_path": "../../tsc-oauth-server/build/host-agent"
+        },
+        "policies": []
+    },
+    {
+        "name": "oauth-app",
+        "type": "app",
+        "origins":[
+            {
+                "hostname": "auth.elyir.local",
+                "path": "/"
+            }
+        ],
+        "target": {
+            "host": null,
+            "app_path": "../../tsc-oauth-server/build/host-agent"
+        },
+        "policies": []
+    }
+]

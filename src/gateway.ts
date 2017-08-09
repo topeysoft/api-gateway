@@ -3,8 +3,10 @@ import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as logger from "morgan";
 import * as path from "path";
+import { ConfigManager } from "./services/config-manager";
 
 export class ApiGateway{
+    logger = logger;
     constructor() {
         this._app = express();
     }
@@ -15,9 +17,9 @@ export class ApiGateway{
         this._app.use(express.static(path.join(__dirname, "public")));
         this._app.set("views", path.join(__dirname, "views"));
         this._app.set("view engine", "pug");
-        this._app.use(logger("dev"));
-        // this._app.use(bodyParser.json({ limit: this._requestSizeLimit }));
-        // this._app.use(bodyParser.urlencoded({ limit: this.requestSizeLimit, extended: true }));
+        this._app.use(this.logger("combined"));
+        this._app.use(bodyParser.json({ limit: ConfigManager.get('requests').size_limit }));
+        this._app.use(bodyParser.urlencoded({ limit: ConfigManager.get('requests').size_limit }));
     }
     getApp(){
         return this._app;

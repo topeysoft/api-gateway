@@ -1,0 +1,6 @@
+{
+    "environment":"production",
+    "requests":{
+        "size_limit":"20mb"
+    }
+}
