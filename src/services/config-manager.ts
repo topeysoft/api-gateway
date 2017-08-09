@@ -9,7 +9,7 @@ export class ConfigManager {
     static hostsFile = `./config/${ConfigManager.environment}.hosts.json`;
 
     static config;
-    static hostConfig = [];
+    static hostConfig;
 
     static getConfig() {
         ConfigManager.setConfigPaths();
@@ -19,7 +19,11 @@ export class ConfigManager {
         return ConfigManager.config;
     }
     static getHostConfig() {
-        return ConfigManager.hostConfig;
+        ConfigManager.setConfigPaths();
+        if(!ConfigManager.hostConfig){
+            ConfigManager.hostConfig = JSON.parse(fs.readFileSync(ConfigManager.hostsFile));
+          }
+          return ConfigManager.hostConfig;
     }
     static get(key:string) {
         const config = ConfigManager.getConfig() || {};

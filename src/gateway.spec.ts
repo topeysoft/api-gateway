@@ -6,7 +6,7 @@ import { ConfigManager } from "./services/config-manager";
 describe('ApiGateway', () => {
     beforeEach(()=>{
         process.env.NODE_ENV = 'development';
-    })
+    });
     it('should contain required methods', () => {
         const gateway:any =new ApiGateway();
         expect(ApiGateway.bootstrap).toBeTruthy();

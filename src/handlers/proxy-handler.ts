@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as proxy from 'http-proxy-middleware';
 import { ConfigManager } from "../services/config-manager";
+import { Host } from "../models/host";
 
 export class ProxyHandler {
 
@@ -14,10 +15,10 @@ export class ProxyHandler {
     private _app: express.Express;
 
     setup() {
-      const hosts:any[] = ConfigManager.getHostConfig();
-      hosts.forEach((host)=>{
+      const hosts:Host[] = ConfigManager.getHostConfig();
+    //   hosts.forEach((host)=>{
 
-      });
+    //   });
     //     var options = {
     //         target: 'http://www.example.org', // target host
     //         changeOrigin: true,               // needed for virtual hosted sites

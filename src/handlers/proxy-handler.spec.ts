@@ -4,6 +4,9 @@ import * as express from 'express';
 import { ConfigManager } from "../services/config-manager";
 
 fdescribe('ProxyHandler', () => {
+    beforeEach(()=>{
+        process.env.NODE_ENV = 'development';
+    });
     it('should contain all required methods and properties', () => {
         const handler = new ProxyHandler;
         expect(handler.setup).toBeTruthy()
