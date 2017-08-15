@@ -349,6 +349,7 @@ declare namespace jasmine {
          * CUSTOM
          */
         toBePlaying(expected: any): boolean;
+        toImplementIHandlerFactory(): boolean;
         // END CUSTOM
 
     }

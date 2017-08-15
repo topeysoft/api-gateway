@@ -1,0 +1,2 @@
+export { ProxyHandlerFactory } from './handler-factories/proxy-handler-factory/proxy-handler.factory';
+export {ChildAppHandlerFactory} from './handler-factories/child-app-handler-factory/child-app-handler.factory';
