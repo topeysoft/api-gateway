@@ -7,9 +7,11 @@ import {
   ChildAppHandlerFactory,
   ProxyHandlerFactory
 } from "../../factories";
+import { HostConfigException } from "../../exceptions/index";
 
-fdescribe("MainHandler", () => {
+describe("MainHandler", () => {
   beforeAll(()=>{
+    spyOn(HostConfigException, 'throw');
     spyOn(ConfigManager, "getHostConfig").and.returnValue(HostsConfigMock);
   });
   beforeEach(() => {

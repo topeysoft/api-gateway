@@ -16,24 +16,24 @@ export const HostsConfigMock = {
           },
 
       ],
-      origin: {
+      origins: [{
         hostname: "example1.com",
         path: "/"
-      },
+      }],
+      // options:{
+
+      // },
       target: {
-        hostname: "localhost",
-        port: 3000,
-        path: "/",
-        query_string: ""
+        url: "http://localhost:3000/abc/123/?test=true#here"
       }
     }
   ],
   apps: [
     {
-      origin: {
+      origins: [{
         hostname: "example2.com",
         path: "/"
-      },
+      }],
       target: {
         path: "./"
       }

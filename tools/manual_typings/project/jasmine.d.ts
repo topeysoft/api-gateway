@@ -349,7 +349,9 @@ declare namespace jasmine {
          * CUSTOM
          */
         toBePlaying(expected: any): boolean;
+        toHaveExtended( baseClass): boolean;
         toImplementIHandlerFactory(): boolean;
+        toHaveBeenCalledWithFunction(calleeFunction): boolean;
         // END CUSTOM
 
     }
