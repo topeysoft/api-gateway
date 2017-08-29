@@ -12,17 +12,23 @@ export class MainHandler {
   
   setup() {
     const config = ConfigManager.getHostConfig();
-    const proxyHandler = new ProxyHandlerFactory;
     const appHandler = new ChildAppHandlerFactory;
+    const proxyHandler = new ProxyHandlerFactory;
     config.proxies.forEach(host=>{
         proxyHandler.createHandler(host);
     });
+    let appsResults = [];
     config.apps.forEach(host=>{
-      appHandler.createHandler(host);
+      appsResults.push(appHandler.createHandler(host));
+     
     });
-
-    this._app.use(appHandler.getApp());
-    this._app.use(proxyHandler.getApp());
+if(appsResults && appsResults.length>0){
+      appsResults.forEach(r=>{
+        console.log(r);
+      });
+     } 
+     this._app.use(appHandler.getApp());
+     this._app.use(proxyHandler.getApp());
   }
   getApp() {
     return this._app;

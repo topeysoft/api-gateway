@@ -14,9 +14,16 @@ export class ProxyHandlerFactory implements IHandlerFactory {
   private _app: express.Express;
 
   private _applyProxies(host:Host) {
-    const targetOptions = Object.assign({}, host.options, {target:host.target});
     host.origins.forEach(origin => {
-      const proxyApp: any = proxy(origin.hostname, targetOptions);
+    const router = {};
+    // router[origin.hostname] = host.target;
+    router[`${origin.hostname}:${process.env.PORT}${origin.path}`] = host.target;
+    router[`${origin.hostname}:${process.env.S_PORT}${origin.path}`] = host.target;
+    Object.keys(router).forEach(key=>{
+      console.log(`Creating router for ${key} --->  ${router[key]}` )
+    })
+    const targetOptions = Object.assign({}, host.options, {target:host.target, router:router});
+    const proxyApp: any = proxy(targetOptions);
       this.getApp().use(proxyApp);
     });
   }

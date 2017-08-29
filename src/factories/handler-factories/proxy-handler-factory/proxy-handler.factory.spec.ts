@@ -15,8 +15,7 @@ const getMockHost = () => {
   testOrigin.path = "./";
   const host = new Host();
   host.origins = [testOrigin];
-  host.target = new Target();
-  host.target.url = "http://localtest";
+  host.target = "http://localtest";
   return host;
 };
 

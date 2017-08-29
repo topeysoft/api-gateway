@@ -1,8 +1,21 @@
 {
-    "environment":"development",
-    "requests":{
-        "size_limit":"20mb"
-    },
-    "change_origin": true,
+  "environment": "development",
+  "requests": {
+    "sizeLimit": "20mb",
+    "headers": {
+      "Access-Control-Allow-Origin": "*",
+      "Allow": "GET, POST, PUT, PATCH, OPTIONS",
+      "Access-Control-Allow-Methods":"GET, POST, PUT, PATCH, OPTIONS"
+    }
+  },
+  "ssl": {
+    "key": "../certs/cert.key",
+    "cert": "../certs/cert.crt",
+    "active": true
+  },
+
+  "proxyOptions": {
+    "changeOrigin": false,
     "ws": true
+  }
 }

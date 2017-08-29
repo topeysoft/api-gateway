@@ -23,9 +23,7 @@ export const HostsConfigMock = {
       // options:{
 
       // },
-      target: {
-        url: "http://localhost:3000/abc/123/?test=true#here"
-      }
+      target: "http://localhost:3000/abc/123/?test=true#here"
     }
   ],
   apps: [

@@ -15,25 +15,34 @@ export class ChildAppHandlerFactory implements IHandlerFactory {
   private _app: express.Express;
 
   private _applyOrigins(origins: [Origin], hostApp) {
+    let result = '';
     origins.forEach(origin => {
       const vhostApp: any = vhost(origin.hostname, hostApp);
       this.getApp().use(vhostApp);
+      result += `${origin.hostname}, `
     });
+    return result;
   }
   constructor() {
     this._app = express();
     this.setup();
   }
   createHandler(host: Host) {
-    try {
+      let result = {};
+      try {
       ConfigValidator.validate(host, APPS_HOST_CONFIG_SCHEMA);
       try {
         let hostApp = require(host.target.path).Server.bootstrap().getApp();
-        this._applyOrigins(host.origins, hostApp);
+        const applied = this._applyOrigins(host.origins, hostApp);
+        result = {HOST_APP:host.target.path, status:`Loaded for ${applied}`};
       } catch (e) {
         this._applyOrigins(host.origins, four04App);
+        result = {HOST_APP:host.target.path, status:`Failed, ${e}`};
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
+    return result;
   }
 
   setup() {}

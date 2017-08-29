@@ -1,32 +1,112 @@
-[
+{
+  "apps": [
     {
-        "name": "my-api",
-        "type": "proxy",
-        "origins": [
-            {
-                "hostname": "api.elyir.local",
-                "path": "/api"
-            }
-        ],
-        "target": {
-            "host": "localhost:5200",
-            "app_path": "../../tsc-oauth-server/build/host-agent"
-        },
-        "policies": []
+      "name": "my-templates",
+      "origins": [
+        {
+          "hostname": "temp.elyir.local"
+        }
+      ],
+      "target": {
+        "path": "d:/git/ui-templates/server"
+      },
+      "policies": []
     },
     {
-        "name": "oauth-app",
-        "type": "app",
-        "origins":[
-            {
-                "hostname": "auth.elyir.local",
-                "path": "/"
-            }
-        ],
-        "target": {
-            "host": null,
-            "app_path": "../../tsc-oauth-server/build/host-agent"
-        },
-        "policies": []
+      "name": "cms-ui",
+      "origins": [
+        {
+          "hostname": "my.elyir.local"
+        }
+      ],
+      "target": {
+        "path": "d:/git/elyir-home/build/elyir-home/src/server"
+      },
+      "policies": []
+    },
+    {
+      "name": "my-api",
+      "origins": [
+        {
+          "hostname": "api.elyir.local"
+        }
+      ],
+      "target": {
+        "path": "d:/git/dynamic-model-system/build/debug"
+      },
+      "policies": []
+    },
+    {
+      "name": "cms-api",
+      "origins": [
+        {
+          "hostname": "cms.api.elyir.local"
+        }
+      ],
+      "target": {
+        "path": "d:/git/dynamic-model-system/build/debug/cms-api"
+      },
+      "policies": []
+    },
+    {
+      "name": "oauth-app",
+      "origins": [
+        {
+          "hostname": "auth.elyir.local",
+          "path": "/"
+        }
+      ],
+      "target": {
+        "path": "d:/git/tsc-oauth-server/build"
+      },
+      "policies": []
     }
-]
+  ],
+  "proxies": [
+    {
+      "name": "topeysoft-home",
+      "origins": [
+        {
+          "hostname": "www.topeysoft.local",
+          "path": "/"
+        }
+      ],
+      "target": "http://localhost:5000/59062e028631a043f468fc73",
+      "options":{
+        "changeOrigin":true,
+        "ws":true
+      },
+      "policies": []
+    },
+    {
+      "name": "elyir-home",
+      "origins": [
+        {
+          "hostname": "www.elyir.local",
+          "path": "/"
+        }
+      ],
+      "target": "http://www.elyir.com",
+      "options":{
+        "changeOrigin":true,
+        "ws":true
+      },
+      "policies": []
+    },
+    {
+      "name": "cms-admin",
+      "origins": [
+        {
+          "hostname": "admin.elyir.local",
+          "path": "/"
+        }
+      ],
+      "target": "http://localhost:4200",
+      "options":{
+        "changeOrigin":false,
+        "ws":false
+      },
+      "policies": []
+    }
+  ]
+}

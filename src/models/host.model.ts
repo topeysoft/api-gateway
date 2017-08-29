@@ -5,7 +5,7 @@ import { Origin } from "./origin.model";
 export class Host {
   name: string;
   origins: [Origin];
-  target: Target;
+  target: Target | any;
   policies: [Policy];
   options: Object;
 }

@@ -57,6 +57,7 @@ export class SeedConfig {
    */
 
   APP_SRC = 'src';
+  E2E_DIR = 'e2e';
   CJS_DIR = 'cjs';
   COVERAGE_DIR = 'coverage';
   DIST_DIR = 'dist';

@@ -12,7 +12,8 @@ export const ORIGINS_CONFIG_SCHEMA = {
       },
       path: {
         id: "/properties/proxies/items/properties/origin/properties/path",
-        type: "string"
+        type: "string",
+        default:'/'
       }
     }
   }
